@@ -97,6 +97,8 @@ minversion = "6.0"
 addopts = "--ignore=modules"
 # Add project root to sys.path so imports work
 pythonpath = ["."]
+# Ignore these
+addopts = "--ignore=modules"
 
 [tool.black]
 line-length = 100
