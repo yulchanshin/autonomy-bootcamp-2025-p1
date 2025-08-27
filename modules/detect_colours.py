@@ -4,9 +4,14 @@ BOOTCAMPERS TO COMPLETE.
 Detects colours on a map of landing pads.
 """
 
+from pathlib import Path
 import cv2
 import numpy as np
-from pathlib import Path
+
+# Bootcampers remove the following lines:
+# Allow linters and formatters to pass for bootcamp maintainers
+# pylint: disable=unused-argument,unused-variable,used-before-assignment
+
 
 class DetectBlue:
     """
@@ -16,21 +21,20 @@ class DetectBlue:
     __create_key = object()
 
     @classmethod
-    def create(cls):
+    def create(cls) -> "DetectBlue":
         """
         Factory method to create DetectBlue instance.
         """
-        
+
         return DetectBlue(cls.__create_key)
 
-
-    def __init__(self, class_create_private_key: object):
+    def __init__(self, class_create_private_key: object) -> None:
         """
         Private constructor, use create() method.
         """
         assert class_create_private_key is DetectBlue.__create_key, "Use create() method"
 
-    def run(self, image: str, output_path: Path, return_mask = False):
+    def run(self, image: str, output_path: Path, return_mask=False) -> None | np.ndarray:
         """
         Detects blue from an image and shows the annotated result.
 
@@ -63,7 +67,7 @@ class DetectBlue:
 
         # Annotate the colour detections
         contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        cv2.drawContours(img, contours, -1, (0,255,0), 2)
+        cv2.drawContours(img, contours, -1, (0, 255, 0), 2)
 
         # Show the annotated detection!
         cv2.imwrite(str(output_path), img)
@@ -72,11 +76,8 @@ class DetectBlue:
         # cv2.imwrite(str(output_path), res)
 
         # This parameter is needed to run tests
-        if return_mask:
-            return mask
+        return mask if return_mask else None
 
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
 
 class DetectRed:
     """
@@ -86,21 +87,20 @@ class DetectRed:
     __create_key = object()
 
     @classmethod
-    def create(cls):
+    def create(cls) -> "DetectRed":
         """
         Factory method to create DetectRed instance.
         """
-        
+
         return DetectRed(cls.__create_key)
 
-
-    def __init__(self, class_create_private_key: object):
+    def __init__(self, class_create_private_key: object) -> None:
         """
         Private constructor, use create() method.
         """
         assert class_create_private_key is DetectRed.__create_key, "Use create() method"
 
-    def run(self, image: str, output_path: Path, return_mask = False):
+    def run(self, image: str, output_path: Path, return_mask=False) -> None | np.ndarray:
         """
         Detects red from an image and shows the annotated result.
 
@@ -123,7 +123,7 @@ class DetectRed:
 
         # Apply the threshold for the colour detection
         mask = ...
-        
+
         # Shows the detected colour from the mask
         res = ...
 
@@ -134,7 +134,7 @@ class DetectRed:
         # ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
         # ============
 
-        cv2.drawContours(img, contours, -1, (0,255,0), 2)
+        cv2.drawContours(img, contours, -1, (0, 255, 0), 2)
 
         # Show the annotated detection!
         cv2.imwrite(str(output_path), img)
@@ -152,6 +152,3 @@ class DetectRed:
         # ============
         # ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
         # ============
-
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
