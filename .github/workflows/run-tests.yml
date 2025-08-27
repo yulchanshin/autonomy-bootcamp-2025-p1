@@ -46,4 +46,4 @@ jobs:
 
       # Install dependencies and run tests with PyTest
       - name: Run PyTest
-        run: pytest -vv --gnore=tests/test_detectcolours.py
+        run: pytest -vv --ignore=tests/test_detectcolours.py
