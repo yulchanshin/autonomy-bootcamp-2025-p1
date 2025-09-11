@@ -8,3 +8,7 @@ venv/
 
 # User testing code
 modules/Output/
+
+# MacOS Metadata
+.DS_Store
+._*
